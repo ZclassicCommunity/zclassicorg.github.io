@@ -1,152 +1,198 @@
 <!doctype html>
-<html lang="en">
+<!-- Zclassic community website. Static frontend with native fonts and no external UI dependencies. -->
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zclassic — Be your own full node</title>
   <meta name="description" content="Zclassic (ZCL): a fair-launch, proof-of-work cryptocurrency with zk-SNARK shielded payments since 2016. Run your own full node with Zclassic or Z23.">
-  <link rel="canonical" href="https://zclassic.org/">
-  <link rel="icon" href="zclassic.png" type="image/png">
-  <link rel="icon" href="zclassic.ico" type="image/x-icon">
+  <meta name="theme-color" content="#faf9f6">
   <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://zclassic.org/">
   <meta property="og:title" content="Zclassic — Be your own full node">
   <meta property="og:description" content="Fair launch. Private payments. Proof-of-work since 2016.">
   <meta property="og:image" content="https://zclassic.org/zclassic.png">
-  <link rel="stylesheet" href="style.css">
+  <title>Zclassic — Be your own full node</title>
+  <link rel="icon" type="image/png" href="./frontend-zcl/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="./frontend-zcl/favicon.svg">
+  <link rel="shortcut icon" href="./frontend-zcl/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="./frontend-zcl/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Zclassic">
+  <link rel="manifest" href="./frontend-zcl/site.webmanifest">
+  <script>
+    (() => {
+      const root = document.documentElement;
+      let preference = 'system';
+      try {
+        const saved = localStorage.getItem('zclassic-theme');
+        if (saved === 'light' || saved === 'dark') preference = saved;
+      } catch (_) {}
+      root.dataset.themePreference = preference;
+      root.dataset.theme = preference === 'dark' ||
+        (preference === 'system' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      document.querySelector('meta[name="theme-color"]').content = root.dataset.theme === 'dark' ? '#171914' : '#faf9f6';
+      window.addEventListener('error', event => {
+        const script = document.getElementById('site-script');
+        if (script && (event.target === script || event.filename === script.src)) root.classList.remove('js');
+      }, true);
+      root.classList.add('js');
+    })();
+  </script>
+  <link rel="stylesheet" href="./frontend-zcl/style.css">
+  <script id="site-script" src="./frontend-zcl/app.js" defer></script>
 </head>
-<body>
+<body id="top" tabindex="-1">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" class="svg-sprite"><defs><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol><symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6z"/><path d="m8 12 3 3 5-6"/></symbol><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M20 8V5a2 2 0 0 0-2-2L5 5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h15zH5a2 2 0 0 1 0-4"/><path d="M20 12h-5v5h5m-3-2.5h.01"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13.5A8.7 8.7 0 0 1 10.5 3a9 9 0 1 0 10 10.5"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol><symbol id="i-code" viewBox="0 0 24 24"><path d="m7 6-6 6 6 6M17 6l6 6-6 6M14 4l-4 16"/></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol><symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="m10 8-4 8m8-8 4 8M8 19h8"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 9A8 8 0 0 0 6 5L3 8m0-5v5h5m-4 7a8 8 0 0 0 14 4l3-3m0 5v-5h-5"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 4v16m8-16v16m8-16v16M1 8h6m2 8h6m2-9h6"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol><symbol id="i-telegram" viewBox="0 0 24 24"><path d="m21 3-4 18-6-6-4 3v-6L2 9z"/><path d="m7 12 14-9-10 12"/></symbol><symbol id="i-github" viewBox="0 0 24 24"><path d="M9 21v-4c-3 1-4-1-5-3m11 7v-4c0-1-.4-1.7-1-2 4-.4 6-2 6-5 0-2-1-3-1-3s.5-2 0-4c-2 0-4 2-4 2a15 15 0 0 0-6 0S7 3 5 3c-.5 2 0 4 0 4s-1 1-1 3c0 3 2 4.6 6 5-.6.3-1 1-1 2"/></symbol><symbol id="i-windows" viewBox="0 0 24 24"><path d="m3 5 8-1v7H3zm10-1 8-1v8h-8zM3 13h8v7l-8-1zm10 0h8v8l-8-1z" fill="currentColor" stroke="none"/></symbol><symbol id="i-apple" viewBox="0 0 24 24"><path d="M15.5 2c.1 2-1.4 4-3.5 4-.2-1.9 1.3-3.8 3.5-4M17 7c-2-1-3 0-5 0S9 6 7 7c-4 2-3 9 0 13 1 1.5 2 1 5 1s4 .5 5-1c1-1.3 2-3 2.5-4.5-3.5-1.5-4-5.5-1-7.5z" fill="currentColor" stroke="none"/></symbol><symbol id="i-linux" viewBox="0 0 24 24"><path d="m5 19 2-7V7a5 5 0 0 1 10 0v5l2 7M8 12c-1 2-2 5-2 7h12c0-2-1-5-2-7"/><path d="m9 10 3 2 3-2-3-2zm-1 9-4 2m12-2 4 2M10 6h.01M14 6h.01"/></symbol></defs></svg>
 
-<header class="wrap bar">
-  <a class="brand" href="/"><img src="zclassic.png" width="28" height="28" alt="">Zclassic</a>
-  <nav>
-    <a href="#download">Download</a>
-    <a href="#z23">Z23</a>
-    <a href="#specs">Specs</a>
-    <a href="#resources">Resources</a>
-  </nav>
-</header>
-
-<main>
-
-  <section class="wrap hero">
-    <p class="eyebrow">ZCL · since November 6, 2016</p>
-    <h1>Be your own<br><span>full node.</span></h1>
-    <p class="lede">Zclassic is a fair-launch, proof-of-work cryptocurrency with zk-SNARK shielded payments. No founders' reward, no tax, no permission needed: every block reward goes to the miner who found it.</p>
-    <div class="actions">
-      <a class="btn primary" href="#download">Get a wallet</a>
-      <a class="btn" href="#z23">Meet Z23</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Zclassic home"><img src="./frontend-zcl/zclassic.svg" alt="" width="31" height="31">Zclassic<span class="period">.</span></a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#discover">Discover</a><a href="#download">Get a wallet</a><a href="#z23">Meet Z23</a><a href="#specs">Network</a><a href="#resources">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" title="Switch theme"><svg class="icon theme-moon" aria-hidden="true"><use href="#i-moon"/></svg><svg class="icon theme-sun" aria-hidden="true"><use href="#i-sun"/></svg></button>
+        <a class="btn header-join" href="https://t.me/zclassic_chat" target="_blank" rel="noopener noreferrer">Join the community<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <button type="button" class="icon-btn menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><svg class="icon menu-lines" aria-hidden="true"><use href="#i-menu"/></svg><svg class="icon menu-close" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section class="wrap grid three pillars">
-    <div>
-      <h3>Private by choice</h3>
-      <p>Shielded addresses hide sender, receiver and amount with zero-knowledge proofs. Transparent addresses work when you want them to.</p>
-    </div>
-    <div>
-      <h3>Fair from block one</h3>
-      <p>A 2016 fork of Zcash that removed the founders' reward. 100% of issuance is mined with Equihash proof-of-work.</p>
-    </div>
-    <div>
-      <h3>Owned by its users</h3>
-      <p>Community governed and permissively licensed. Anyone can build on it, fork it or run it. Nobody has to ask.</p>
-    </div>
-  </section>
+  <main id="main" tabindex="-1">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span>Independent by design. Since 2016.</p>
+        <h1 id="hero-title"><span>Your money.</span><span>Your privacy.</span><span class="accent">Your rules.</span></h1>
+        <p class="hero-desc">Private payments. Fair rewards. A blockchain that answers to its users. This is Zclassic — money on your terms.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#download">Get a wallet<svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+          <a class="btn text" href="#discover">Discover Zclassic<svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></a>
+        </div>
+        <div class="hero-assurances"><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No founders’ reward</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No protocol tax</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Open to everyone</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg class="orbital-art" viewBox="0 0 600 560" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="coin-rim" x1="205" y1="130" x2="413" y2="447" gradientUnits="userSpaceOnUse"><stop stop-color="#fad4ab"/><stop offset=".26" stop-color="#e38b4c"/><stop offset=".53" stop-color="#8e3c14"/><stop offset=".8" stop-color="#d18043"/><stop offset="1" stop-color="#623418"/></linearGradient><linearGradient id="coin-face" x1="219" y1="124" x2="407" y2="422" gradientUnits="userSpaceOnUse"><stop stop-color="#f4bb83"/><stop offset=".35" stop-color="#e99a5e"/><stop offset=".68" stop-color="#cd7038"/><stop offset="1" stop-color="#a75025"/></linearGradient><linearGradient id="coin-inner" x1="233" y1="164" x2="391" y2="407" gradientUnits="userSpaceOnUse"><stop stop-color="#eda668"/><stop offset=".5" stop-color="#d47e42"/><stop offset="1" stop-color="#c16b37"/></linearGradient><linearGradient id="z-face" x1="270" y1="198" x2="335" y2="334" gradientUnits="userSpaceOnUse"><stop stop-color="#fff4df"/><stop offset=".5" stop-color="#f8d2a0"/><stop offset="1" stop-color="#edb47c"/></linearGradient><radialGradient id="node-fill"><stop stop-color="#fbcd9a"/><stop offset=".6" stop-color="#e19455"/><stop offset="1" stop-color="#bd632c"/></radialGradient><filter id="ground-blur"><feGaussianBlur stdDeviation="11"/></filter><filter id="coin-shadow" x="-30%" y="-20%" width="160%" height="170%"><feDropShadow dx="-7" dy="21" stdDeviation="16" flood-color="#663715" flood-opacity=".16"/></filter><path id="coin-text-path" d="M225 280a84 100 0 1 1 168 0"/><mask id="coin-logo-mask" maskUnits="userSpaceOnUse" x="230" y="191" width="156" height="156" class="coin-logo-mask"><image href="./frontend-zcl/zclassic.svg" x="230" y="191" width="156" height="156"/></mask><filter id="coin-logo-emboss" x="-15%" y="-15%" width="135%" height="140%"><feDropShadow dx="2" dy="3" stdDeviation=".6" flood-color="#7c3416" flood-opacity=".65"/></filter></defs><ellipse cx="313" cy="464" rx="162" ry="15" fill="#955320" opacity=".12" filter="url(#ground-blur)"/><g class="orbital-line" stroke-width=".8"><ellipse cx="307" cy="275" rx="261" ry="142" transform="rotate(-27 307 275)"/><ellipse cx="307" cy="275" rx="247" ry="133" transform="rotate(34 307 275)"/><ellipse cx="307" cy="275" rx="219" ry="203" transform="rotate(-12 307 275)" stroke-dasharray="2 7"/><path d="M67 275h480M307 71v409" opacity=".3"/></g><g class="orbital-line" stroke-width="1"><path d="M84 169v12m-6-6h12m392 214v12m-6-6h12M473 97v10m-5-5h10M148 434v10m-5-5h10"/></g><circle cx="82" cy="263" r="11" fill="url(#node-fill)"/><circle cx="491" cy="143" r="6" fill="url(#node-fill)"/><circle cx="464" cy="407" r="13" fill="url(#node-fill)"/><circle cx="217" cy="86" r="4" fill="#c7743d"/><circle cx="548" cy="291" r="3" fill="#c7743d"/><g class="coin-float"><g transform="rotate(-19 308 278)" filter="url(#coin-shadow)"><ellipse cx="328" cy="283" rx="137" ry="166" fill="url(#coin-rim)" stroke="#a65726" stroke-width=".6"/><path d="m426 164 15 14m-4 5 15 14m-8 7 17 13m-12 9 18 11m-15 13 18 8m-18 16 19 5m-21 20 19 2m-25 22 20-1m-29 25 20-4m-32 26 20-7m-35 27 19-10m-37 28 17-13m-37 26 15-14m-36 24 14-16m-36 22 11-17m-33 18 8-17m-31 14 6-17m-26 10 4-17" stroke="#f1b27a" stroke-opacity=".45" stroke-width=".8"/><ellipse cx="310" cy="271" rx="136" ry="166" fill="url(#coin-face)" stroke="#f9d2a5" stroke-width="1.5"/><ellipse cx="310" cy="271" rx="124" ry="152" stroke="#8e411e" stroke-opacity=".6" stroke-width="1"/><ellipse cx="310" cy="271" rx="121" ry="149" stroke="#ffd4a3" stroke-opacity=".5" stroke-width="1"/><ellipse cx="310" cy="271" rx="103" ry="126" fill="url(#coin-inner)" stroke="#8e411e" stroke-opacity=".35"/><text fill="#713819" font-family="system-ui,sans-serif" font-size="8.2" font-weight="700" letter-spacing="2.5"><textPath href="#coin-text-path" startOffset="13%">ZCLASSIC · YOUR RULES</textPath></text><g filter="url(#coin-logo-emboss)"><rect x="230" y="191" width="156" height="156" fill="url(#z-face)" mask="url(#coin-logo-mask)"/></g><text x="308" y="385" text-anchor="middle" fill="#f9c18e" font-family="system-ui,sans-serif" font-size="9" letter-spacing="4">EST. 2016</text></g></g><path d="M56 334c43 65 173 83 301 50 116-30 197-103 201-161" stroke="#b96a34" stroke-opacity=".45" stroke-width="1.1"/><circle cx="104" cy="372" r="5" fill="url(#node-fill)"/><circle cx="386" cy="376" r="4" fill="url(#node-fill)"/><g fill="currentColor" opacity=".35" font-family="system-ui,sans-serif" font-size="7" letter-spacing="1.2"><text x="53" y="247">P2P</text><text x="460" y="438">ZCL</text><text x="165" y="75">PROOF OF WORK</text></g></svg>
+        <div class="art-label privacy-label"><div class="label-icon"><svg class="icon"><use href="#i-shield"/></svg></div><div><strong>Private by choice.</strong><small>Powered by zk-SNARKs</small></div></div>
+        <div class="art-label rewards-label"><span class="reward-number">100%</span><div><strong>To the miners.</strong><small>Every block. From day one.</small></div></div>
+        <div class="art-caption">NO PERMISSION REQUIRED. / ZCL</div>
+      </div>
+    </section>
 
-  <section id="download" class="wrap">
-    <h2>Download</h2>
-    <p class="muted">Zclassic v2.1.2-beta6 — a single-file wallet with the full node built in.</p>
-    <div class="grid three cards">
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-win64.exe">
-        <strong>Windows</strong><span>zclwallet · 64-bit</span>
-      </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-macos-arm64.dmg">
-        <strong>macOS</strong><span>zclwallet · Apple silicon</span>
-      </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-linux-x86_64">
-        <strong>Linux</strong><span>zclwallet · x86_64</span>
-      </a>
+    <div class="wrap fact-strip" aria-label="Zclassic at a glance">
+      <div class="fact"><strong>2016</strong><span>A fair beginning</span></div><div class="fact"><strong>0%</strong><span>Founders’ reward</span></div><div class="fact"><strong>100%</strong><span>Rewards to miners</span></div><div class="fact"><strong>zk-SNARKs</strong><span>Privacy technology</span></div>
     </div>
-    <p class="small">Command-line node (<code>zclassicd</code>):
-      <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-linux-x86_64.tar.gz">Linux</a> ·
-      <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-macos-arm64.tar.gz">macOS</a> ·
-      <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-win64.zip">Windows</a> ·
-      <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/SHA256SUMS.txt">SHA256SUMS</a> ·
-      <a href="https://github.com/ZclassicCommunity/zclassic/releases">all releases</a>
-    </p>
-  </section>
 
-  <section id="z23" class="wrap feature">
-    <p class="eyebrow">New · open source</p>
-    <h2>Z23: the Zclassic full node in one C23 program.</h2>
-    <p class="lede">Z23 is an independent, from-source ZClassic node written in C23. It downloads the chain from peers and checks every block itself: proof-of-work, scripts and the zero-knowledge proofs behind shielded payments.</p>
-    <ul class="checks">
-      <li><strong>Verifies everything locally.</strong> Shielded proof verification is native C23, with the verifying keys compiled in. No Rust, and no proving parameters needed to sync.</li>
-      <li><strong>Tor built in.</strong> Tor is bundled, on by default, and the node publishes its own <code>.onion</code>. It trusts no DNS seeder and no certificate authority.</li>
-      <li><strong>Its own block explorer.</strong> The node serves an explorer and a JSON API itself, with no reverse proxy or hosted service in front.</li>
-      <li><strong>Wallet and RPC.</strong> Transparent and shielded wallet state, and an RPC interface for your own tools.</li>
-      <li><strong>Built to recover.</strong> A fresh node starts honestly empty and reports why when it can't make progress. It is designed to survive <code>kill -9</code>.</li>
-      <li><strong>Answers to you.</strong> One executable you build and run on your own machine. Its optional software commons keeps code only when you accept that exact version.</li>
-    </ul>
-<pre><code>git clone https://github.com/z23c/z23.git
-cd z23 &amp;&amp; make setup &amp;&amp; make -j z23
-build/bin/z23</code></pre>
-    <p class="small">Status: pre-v1, under active development and measured against eight public acceptance criteria, including consensus parity with <code>zclassicd</code>. <a href="https://github.com/z23c/z23">github.com/z23c/z23</a></p>
-  </section>
+    <section class="wrap section" id="discover" tabindex="-1" aria-labelledby="discover-title">
+      <p class="eyebrow"><span class="index">01 /</span>The Zclassic way</p>
+      <div class="section-heading"><h2 id="discover-title">Built on principles.<br><span class="accent">Powered by people.</span></h2><p>Privacy should be a choice. Participation should be open. And ownership should always be yours.</p></div>
+      <div class="principles">
+        <article class="principle reveal"><span class="card-number">01</span>
+          <div class="principle-art"><svg viewBox="0 0 180 125" fill="none" aria-hidden="true"><circle cx="90" cy="60" r="49" class="graphic-soft"/><path d="M18 47h26m92 0h26M18 73h26m92 0h26" class="graphic-line" stroke-dasharray="3 4"/><rect x="6" y="42" width="13" height="10" rx="3" class="graphic-soft"/><rect x="161" y="68" width="13" height="10" rx="3" class="graphic-soft"/><path d="M90 25 61 36v24c0 20 29 36 29 36s29-16 29-36V36z" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/><rect x="79" y="52" width="22" height="19" rx="4" class="graphic-soft" stroke="var(--accent)" stroke-width="1.5"/><path d="M84 52v-6a6 6 0 0 1 12 0v6m-6 7v6" stroke="var(--accent)" stroke-width="1.5"/><circle cx="141" cy="23" r="3" class="graphic-accent"/></svg></div>
+          <h3>Private by choice.</h3><p>Shielded payments keep the sender, receiver, and amount private using zero-knowledge proofs. Choose transparent addresses when you want to.</p><a class="link-arrow" href="https://github.com/zcash/zips/raw/a8adb58654e086df352bde5f3b5e20110d43e91c/protocol/protocol.pdf" target="_blank" rel="noopener noreferrer">Explore the technology<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="principle reveal"><span class="card-number">02</span>
+          <div class="principle-art"><svg viewBox="0 0 180 125" fill="none" aria-hidden="true"><path d="M25 102h133" class="graphic-line"/><path d="M35 27v75m37-75v75m37-75v75m37-75v75" class="graphic-line" stroke-dasharray="2 5"/><rect x="34" y="77" width="23" height="25" rx="3" class="graphic-soft"/><rect x="64" y="60" width="23" height="42" rx="3" fill="var(--bright)" opacity=".3"/><rect x="94" y="43" width="23" height="59" rx="3" fill="var(--bright)" opacity=".6"/><rect x="124" y="26" width="23" height="76" rx="3" fill="var(--bright)"/><path d="m36 51 79-33m-12-2 12 2-6 10" stroke="var(--accent)" stroke-width="1.5"/><rect x="16" y="10" width="60" height="23" rx="6" fill="var(--surface)" stroke="var(--line)"/><text x="46" y="25" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" class="graphic-ink">100% MINED</text></svg></div>
+          <h3>Fair from block one.</h3><p>Launched in 2016 as a fork of Zcash, without the founders’ reward. Every block reward goes to the miner who found it. No protocol tax.</p><a class="link-arrow" href="#specs">See the network specs<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="principle reveal"><span class="card-number">03</span>
+          <div class="principle-art"><svg viewBox="0 0 180 125" fill="none" aria-hidden="true"><path d="M90 23 43 57l10 44h74l10-44z" class="graphic-line" stroke-width="1.5"/><path d="m43 57 84 44m10-44-84 44m37-78v79M43 57h94" class="graphic-line" stroke-dasharray="3 4"/><circle cx="90" cy="62" r="22" class="graphic-soft" stroke="var(--accent)" stroke-width="1.2"/><path d="M82 54h19L87 73h13m-18 0h5" stroke="var(--accent)" stroke-width="3"/><g fill="var(--surface)" stroke="var(--accent)" stroke-width="1.3"><circle cx="90" cy="23" r="7"/><circle cx="43" cy="57" r="7"/><circle cx="137" cy="57" r="7"/><circle cx="53" cy="101" r="7"/><circle cx="127" cy="101" r="7"/></g><circle cx="90" cy="23" r="2" class="graphic-accent"/><circle cx="53" cy="101" r="2" class="graphic-accent"/><circle cx="137" cy="57" r="2" class="graphic-accent"/></svg></div>
+          <h3>Owned by its users.</h3><p>Open source. Community governed. Free to build on, run, or fork. Zclassic belongs to the people who participate, and everyone is welcome.</p><a class="link-arrow" href="https://github.com/ZclassicCommunity/zclassic" target="_blank" rel="noopener noreferrer">Build with the community<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </section>
 
-  <section id="specs" class="wrap">
-    <h2>Specs</h2>
-    <dl class="specs">
-      <div><dt>Ticker</dt><dd>ZCL</dd></div>
-      <div><dt>Launched</dt><dd><a href="https://bitcointalk.org/index.php?topic=1671982.0">November 6, 2016</a></dd></div>
-      <div><dt>Consensus</dt><dd>Proof-of-work, Equihash</dd></div>
-      <div><dt>Privacy</dt><dd>zk-SNARK shielded (Sapling)</dd></div>
-      <div><dt>Maximum supply</dt><dd>11,462,488 ZCL</dd></div>
-      <div><dt>Mined so far</dt><dd>≈10.49 million (Sep 2026)</dd></div>
-      <div><dt>Block reward</dt><dd>0.390625 ZCL, all to miners</dd></div>
-      <div><dt>Next halving</dt><dd>Block 4,067,001</dd></div>
-    </dl>
-  </section>
+    <section class="download-section section" id="download" tabindex="-1" aria-labelledby="download-title"><div class="wrap">
+      <p class="eyebrow"><span class="index">02 /</span>Make it yours</p>
+      <div class="section-heading"><h2 id="download-title">Your keys.<br>Your next chapter.</h2><div class="release-pill"><span class="dot"></span>Wallet release · v2.1.2-beta6</div></div>
+      <div class="download-layout reveal">
+        <div class="wallet-story"><span class="wallet-kicker">THE ZCLASSIC WALLET</span><div class="wallet-icon"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></div><h3>A wallet.<br>A full node.<br>All yours.</h3><p>One file. Your own keys. A full node built in, so you can verify the blockchain yourself.</p><div class="wallet-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Transparent &amp; shielded payments</div></div>
+        <div class="wallet-picker"><p class="picker-heading">Choose your desktop platform</p>
+          <div class="os-tabs" role="tablist" aria-label="Wallet operating system">
+            <button type="button" class="os-tab" id="tab-windows" data-os="windows" role="tab" aria-selected="true" aria-controls="wallet-panel" tabindex="0"><svg class="icon" aria-hidden="true"><use href="#i-windows"/></svg>Windows</button>
+            <button type="button" class="os-tab" id="tab-macos" data-os="macos" role="tab" aria-selected="false" aria-controls="wallet-panel" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#i-apple"/></svg>macOS</button>
+            <button type="button" class="os-tab" id="tab-linux" data-os="linux" role="tab" aria-selected="false" aria-controls="wallet-panel" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#i-linux"/></svg>Linux</button>
+          </div>
+          <div class="wallet-panel" id="wallet-panel" role="tabpanel" aria-labelledby="tab-windows" tabindex="0">
+            <h3 id="wallet-title">Zclassic for Windows</h3><p class="wallet-meta" id="wallet-meta">64-bit · v2.1.2-beta6 · Beta release</p>
+            <ul class="wallet-features"><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>A single-file desktop wallet</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Your full node, built right in</li><li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Open source and community maintained</li></ul>
+            <a class="btn primary download-btn" id="wallet-download" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-win64.exe" target="_blank" rel="noopener noreferrer"><span id="download-label">Download for Windows</span><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg></a>
+            <div class="download-meta"><span id="download-format">.exe · 64-bit</span><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/SHA256SUMS.txt" target="_blank" rel="noopener noreferrer">Verify checksums ↗</a></div>
+          </div>
+          <div class="wallet-alternatives"><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-macos-arm64.dmg">Download for macOS · Apple silicon</a><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-linux-x86_64">Download for Linux · x86_64</a></div>
+        </div>
+      </div>
+      <details class="node-downloads"><summary>Prefer the command line? Get zclassicd.</summary><div class="node-links"><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-linux-x86_64.tar.gz">Linux · x86_64</a><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-macos-arm64.tar.gz">macOS · Apple silicon</a><a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclassicd-v2.1.2-beta6-win64.zip">Windows · 64-bit</a><a href="https://github.com/ZclassicCommunity/zclassic/releases" target="_blank" rel="noopener noreferrer">All releases ↗</a></div></details>
+    </div></section>
 
-  <section id="resources" class="wrap grid four links">
-    <div>
-      <h3>Explore</h3>
-      <a href="https://explorer.zcl.zelcore.io/">Block explorer</a>
-      <a href="https://github.com/ZclassicCommunity/zclassic">Zclassic source</a>
-      <a href="https://github.com/z23c/z23">Z23 source</a>
-      <a href="https://github.com/zcash/zips/raw/a8adb58654e086df352bde5f3b5e20110d43e91c/protocol/protocol.pdf">Protocol spec</a>
-    </div>
-    <div>
-      <h3>Wallets</h3>
-      <a href="https://zelcore.io/">Zelcore</a>
-      <a href="https://www.coinomi.com/">Coinomi</a>
-      <a href="https://github.com/ZclassicCommunity/electrum-zclassic/releases/download/v3.2.6/electrum-zclassic-v3.2.6-setup-win64.exe">Electrum-Zclassic (Windows)</a>
-      <a href="https://github.com/ZclassicCommunity/electrum-zclassic/releases/download/v3.2.6/electrum-zclassic-v3.2.6-macosx.dmg">Electrum-Zclassic (macOS)</a>
-    </div>
-    <div>
-      <h3>Markets</h3>
-      <a href="https://nonkyc.io/market/ZCL_USDT">NonKYC</a>
-      <a href="https://safe.trade/">SafeTrade</a>
-      <a href="https://www.nofinex.com/market/pair/ZCL-BTC.html">Nofinex</a>
-      <a href="https://www.coingecko.com/en/coins/zclassic">CoinGecko</a>
-      <a href="https://coinmarketcap.com/currencies/zclassic/">CoinMarketCap</a>
-    </div>
-    <div>
-      <h3>Community</h3>
-      <a href="https://t.me/zclassic_chat">Telegram</a>
-      <a href="zclassic-mission-2025.pdf">Mission &amp; vision (2025)</a>
-      <a href="zclassic.pdf">Zclassic paper</a>
-      <a href="https://www.forbes.com/digital-assets/assets/zclassic-zcl/">Forbes</a>
-      <a href="https://www.bloomberg.com/news/articles/2018-02-22/when-you-come-to-a-fork-in-the-crypto-take-it-fundstrat-says">Bloomberg</a>
-    </div>
-  </section>
+    <section class="wrap z23-section" id="z23" tabindex="-1" aria-labelledby="z23-title"><div class="z23-feature reveal">
+      <div class="z23-topline"><p class="eyebrow"><span class="index">03 /</span>The next chapter</p><span class="status-pill">PRE-V1 · IN DEVELOPMENT</span></div>
+      <div class="z23-main"><div><h2 class="z23-title" id="z23-title">One program.<br>Your entire node.<br><span>Meet Z23.</span></h2><p class="z23-intro">An independent Zclassic full node, written in C23. Download the chain from peers and verify every block yourself — including the proofs behind shielded payments.</p><a class="link-arrow z23-source" href="https://github.com/z23c/z23" target="_blank" rel="noopener noreferrer">Explore Z23 on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <div><div class="terminal"><div class="terminal-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="terminal-title">build-your-own.sh</span><button type="button" class="copy-btn" id="copy-code" aria-label="Copy Z23 setup commands"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span id="copy-label">Copy</span></button></div>
+          <pre aria-label="Z23 setup commands" role="region" tabindex="0"><code id="setup-code"><span class="prompt" aria-hidden="true">$ </span>git clone <span class="code-url">https://github.com/z23c/z23.git</span>
+<span class="prompt" aria-hidden="true">$ </span>cd z23 &amp;&amp; make setup &amp;&amp; make -j z23
+<span class="prompt" aria-hidden="true">$ </span>build/bin/z23</code></pre>
+          <div class="terminal-caption"><span>Native C23</span><span>No Rust toolchain</span><span>Build from source</span></div></div><p class="terminal-prereq">Status: pre-v1, under active development and measured against eight public acceptance criteria, including consensus parity with <code>zclassicd</code>. <a href="https://github.com/z23c/z23">github.com/z23c/z23</a></p></div>
+      </div>
+      <div class="z23-capabilities">
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><div><h3>Verify locally.</h3><p>Shielded proof verification is native C23, with the verifying keys compiled in. No Rust, and no proving parameters needed to sync.</p></div></div>
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><div><h3>Tor, built in.</h3><p>Tor is bundled, on by default, and the node publishes its own <code>.onion</code>. It trusts no DNS seeder and no certificate authority.</p></div></div>
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><div><h3>Your own explorer.</h3><p>The node serves an explorer and a JSON API itself, with no reverse proxy or hosted service in front.</p></div></div>
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg><div><h3>Wallet + RPC.</h3><p>Transparent and shielded wallet state, and an RPC interface for your own tools.</p></div></div>
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg><div><h3>Built to recover.</h3><p>A fresh node starts honestly empty and reports why when it can't make progress. It is designed to survive <code>kill -9</code>.</p></div></div>
+        <div class="capability"><svg class="icon" aria-hidden="true"><use href="#i-sliders"/></svg><div><h3>Answers to you.</h3><p>One executable you build and run on your own machine. Its optional software commons keeps code only when you accept that exact version.</p></div></div>
+      </div>
+    </div></section>
 
-</main>
+    <section class="wrap section specs-section" id="specs" tabindex="-1" aria-labelledby="specs-title">
+      <p class="eyebrow"><span class="index">04 /</span>Under the hood</p>
+      <div class="specs-grid"><div class="specs-copy"><h2 class="section-title" id="specs-title">A finite supply.<br>A fair foundation.</h2><p>Proof of work. Zero-knowledge privacy. The fundamentals of Zclassic, in plain sight.</p>
+        <div class="supply-card"><svg class="supply-ring" viewBox="0 0 100 100" role="img" aria-label="Approximately 91.5 percent of the maximum supply mined as of September 2026"><circle class="ring-track" cx="50" cy="50" r="41" fill="none" stroke-width="7"/><circle class="ring-value" cx="50" cy="50" r="41" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="235.8 257.6" transform="rotate(-90 50 50)"/><text x="50" y="56" text-anchor="middle">91.5%</text></svg><div class="supply-caption"><strong>≈ 10.49M <span class="accent">ZCL</span></strong><p>of 11,462,488 maximum supply</p><small>Mined supply · September 2026</small></div></div>
+      </div><div><dl class="spec-list">
+        <div><dt>Ticker</dt><dd>ZCL<small>Zclassic</small></dd></div><div><dt>Consensus</dt><dd>Proof of work<small>Equihash</small></dd></div>
+        <div><dt>Fair launch</dt><dd><a href="https://bitcointalk.org/index.php?topic=1671982.0" target="_blank" rel="noopener noreferrer">November 6, 2016 ↗</a></dd></div><div><dt>Privacy</dt><dd>zk-SNARKs<small>Sapling shielded payments</small></dd></div>
+        <div><dt>Maximum supply</dt><dd>11,462,488 ZCL</dd></div><div><dt>Founders’ reward</dt><dd>0%<small>All issuance is mined</small></dd></div>
+        <div><dt>Block reward</dt><dd>0.390625 ZCL<small>100% to miners</small></dd></div><div><dt>Next halving</dt><dd>Block 4,067,001</dd></div>
+      </dl><p class="spec-source">Figures from <a href="https://zclassic.org/" target="_blank" rel="noopener noreferrer">zclassic.org</a>. Supply estimate: September 2026.</p></div></div>
+    </section>
 
-<footer class="wrap foot">
-  <img src="cc0.png" alt="CC0" height="15">
-  <span>Zclassic · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 public domain</a> · No rights reserved · 2016–2026</span>
-</footer>
+    <section class="resource-section section" id="resources" tabindex="-1" aria-labelledby="resources-title"><div class="wrap">
+      <p class="eyebrow"><span class="index">05 /</span>The open ecosystem</p>
+      <div class="section-heading"><h2 id="resources-title">Find your way in.</h2><p>Explore the chain. Choose your tools.<br>Meet the people building what comes next.</p></div>
+      <div class="resource-controls"><div class="resource-filters" role="group" aria-label="Filter resources by category"><button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All resources</button><button type="button" class="filter-btn" data-filter="explore" aria-pressed="false">Explore</button><button type="button" class="filter-btn" data-filter="wallets" aria-pressed="false">Wallets</button><button type="button" class="filter-btn" data-filter="markets" aria-pressed="false">Markets</button><button type="button" class="filter-btn" data-filter="community" aria-pressed="false">Community</button></div><label class="resource-search"><span class="sr-only">Search resources</span><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="resource-search" type="search" placeholder="Find a resource…" autocomplete="off"></label></div>
+      <div class="resource-grid" id="resource-grid">
+        <div class="resource-group" data-category="explore"><h3>Explore<span>01</span></h3><ul>
+          <li><a href="https://explorer.zcl.zelcore.io/" target="_blank" rel="noopener noreferrer">Block explorer<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://github.com/z23c/z23" target="_blank" rel="noopener noreferrer">Z23 source<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://github.com/zcash/zips/raw/a8adb58654e086df352bde5f3b5e20110d43e91c/protocol/protocol.pdf" target="_blank" rel="noopener noreferrer">Protocol specification<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul></div>
+        <div class="resource-group" data-category="wallets"><h3>Wallets<span>02</span></h3><ul>
+          <li><a href="https://zelcore.io/" target="_blank" rel="noopener noreferrer">Zelcore<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.coinomi.com/" target="_blank" rel="noopener noreferrer">Coinomi<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://github.com/ZclassicCommunity/electrum-zclassic/releases/download/v3.2.6/electrum-zclassic-v3.2.6-setup-win64.exe" target="_blank" rel="noopener noreferrer">Electrum · Windows<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://github.com/ZclassicCommunity/electrum-zclassic/releases/download/v3.2.6/electrum-zclassic-v3.2.6-macosx.dmg" target="_blank" rel="noopener noreferrer">Electrum · macOS<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul></div>
+        <div class="resource-group" data-category="markets"><h3>Markets<span>03</span></h3><ul>
+          <li><a href="https://nonkyc.io/market/ZCL_USDT" target="_blank" rel="noopener noreferrer">NonKYC<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://safe.trade/" target="_blank" rel="noopener noreferrer">SafeTrade<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.nofinex.com/market/pair/ZCL-BTC.html" target="_blank" rel="noopener noreferrer">Nofinex<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.coingecko.com/en/coins/zclassic" target="_blank" rel="noopener noreferrer">CoinGecko<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://coinmarketcap.com/currencies/zclassic/" target="_blank" rel="noopener noreferrer">CoinMarketCap<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul></div>
+        <div class="resource-group" data-category="community"><h3>Community<span>04</span></h3><ul>
+          <li><a href="./zclassic-mission-2025.pdf" target="_blank" rel="noopener noreferrer">Mission &amp; vision<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="./zclassic.pdf" target="_blank" rel="noopener noreferrer">Zclassic paper<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.forbes.com/digital-assets/assets/zclassic-zcl/" target="_blank" rel="noopener noreferrer">Forbes<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.bloomberg.com/news/articles/2018-02-22/when-you-come-to-a-fork-in-the-crypto-take-it-fundstrat-says" target="_blank" rel="noopener noreferrer">Bloomberg<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul></div>
+      </div><div class="resource-empty" id="resource-empty" hidden><p>No resources found. Try another name or choose a different category.</p><button class="btn" id="reset-resources" type="button">Clear search and filters</button></div><p class="resource-count" id="resource-count" role="status" aria-live="polite"></p>
+    </div></section>
+
+    <section class="wrap community-banner reveal" aria-labelledby="community-title"><div><p class="eyebrow">By the community. For the community.</p><h2 id="community-title">Built by people.<br>Open to everyone.</h2></div><div><p>Write code. Run a node. Improve the docs.<br>Or just bring your perspective. There’s a place for you.</p><div class="community-actions"><a class="btn primary" href="https://t.me/zclassic_chat" target="_blank" rel="noopener noreferrer">Join the conversation<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="link-arrow" href="https://github.com/ZclassicCommunity/zclassic" target="_blank" rel="noopener noreferrer">Contribute on GitHub<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div></div></section>
+  </main>
+
+  <footer class="wrap footer"><div class="footer-top"><div><a class="brand" href="#top" aria-label="Zclassic home"><img src="./frontend-zcl/zclassic.svg" width="31" height="31" alt="">Zclassic<span class="period">.</span></a><p class="footer-tagline">Private by choice. Free by principle.</p></div><div class="footer-social"><a class="icon-btn" href="https://github.com/ZclassicCommunity/zclassic" target="_blank" rel="noopener noreferrer" aria-label="Zclassic on GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a><a class="icon-btn" href="https://t.me/zclassic_chat" target="_blank" rel="noopener noreferrer" aria-label="Zclassic on Telegram"><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg></a><a class="back-top" href="#top">Back to top<svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></a></div></div><div class="footer-bottom"><p class="footer-legal"><span>Zclassic ·</span><a class="cc0-badge-link" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="license noopener noreferrer" title="CC0 1.0 Universal"><img class="cc0-badge" src="./frontend-zcl/cc0.svg" alt="CC0 public domain" width="80" height="15"></a><span>· No rights reserved · 2016–2026</span></p><div class="license-links"><a href="./zclassic-mission-2025.pdf" target="_blank" rel="noopener noreferrer">Mission &amp; vision</a><a href="https://github.com/ZclassicCommunity/zclassic" target="_blank" rel="noopener noreferrer">Open source ↗</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 
 </body>
 </html>

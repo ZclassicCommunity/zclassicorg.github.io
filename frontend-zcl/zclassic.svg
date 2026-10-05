@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="logo-title logo-description" shape-rendering="geometricPrecision">
+  <title id="logo-title">Zclassic</title>
+  <desc id="logo-description">The original Zclassic Z and segmented circular ring, redrawn as clean copper vector paths on a transparent background.</desc>
+  <defs>
+    <linearGradient id="zclassic-copper" x1="38" y1="10" x2="162" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DF8854"/>
+      <stop offset="0.46" stop-color="#CE6D3F"/>
+      <stop offset="1" stop-color="#B6552D"/>
+    </linearGradient>
+  </defs>
+  <g id="zclassic-mark" fill="url(#zclassic-copper)">
+    <!-- Circular body: the characteristic open right segment is preserved. -->
+    <path d="M175.338 36.364A99 99 0 1 0 175.338 163.636L156.57 147.888A74.5 74.5 0 1 1 156.57 52.112Z"/>
+    <!-- Upper arm of the Z, joined to the circular body. -->
+    <path d="M25 55.5H106.5L93 79H25Z"/>
+    <!-- Diagonal and lower arm, following the original circular edge. -->
+    <path d="M111 55.5H139.5L102 121.5H172.917A76.5 76.5 0 0 1 161 145.5H59.5Z"/>
+    <!-- Fine outlined ring segment, drawn with exact circular arcs. -->
+    <path d="M175.876 38.594A98 98 0 0 1 175.876 161.406L158.34 147.307A75.5 75.5 0 0 0 158.34 52.693Z" fill="none" stroke="url(#zclassic-copper)" stroke-width="1.8" stroke-linejoin="round"/>
+  </g>
+</svg>

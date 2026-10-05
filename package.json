@@ -1,0 +1,15 @@
+{
+  "name": "zclassic-community-website",
+  "private": true,
+  "scripts": {
+    "test:static": "python3 tools/check_frontend.py",
+    "test:browser": "node tools/browser-check.cjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "playwright": "1.62.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

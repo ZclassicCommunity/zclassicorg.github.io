@@ -1,0 +1,5 @@
+node_modules/
+/REVIEW_REPORT.md
+test-results/
+playwright-report/
+__pycache__/
