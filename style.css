@@ -96,6 +96,14 @@ nav a:hover { color: var(--fg); }
 .card:hover { border-color: var(--accent); transform: translateY(-2px); color: var(--fg); }
 .card strong { font-size: 1.1rem; }
 .card span { color: var(--muted); font-size: .9rem; }
+.card .get { margin-top: 10px; color: var(--accent); font-weight: 600; font-size: .88rem; }
+.card .get::after { content: " \2193"; }
+
+/* Download */
+.dl-head { margin: 2.2em 0 0; font-size: 1.05rem; }
+.dl-head span { font-weight: 400; color: var(--muted); }
+.dl-head code { font-size: .82em; }
+.dl-head + .cards { margin-top: 1em; }
 
 /* Z23 */
 .feature h2 { max-width: 34rem; }
