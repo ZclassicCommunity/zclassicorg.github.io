@@ -81,7 +81,6 @@ nav a:hover { color: var(--fg); }
 
 /* Grids */
 .grid { display: grid; gap: 20px; }
-.grid.two { grid-template-columns: repeat(2, 1fr); }
 .grid.three { grid-template-columns: repeat(3, 1fr); }
 .grid.four { grid-template-columns: repeat(4, 1fr); }
 
@@ -112,6 +111,7 @@ pre code { background: none; border: 0; padding: 0; font-size: .9rem; }
 
 /* Community */
 .community .cards { margin-bottom: 0; }
+.community .card { max-width: 24rem; }
 
 /* Specs */
 .specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 1.6em 0 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
@@ -145,7 +145,7 @@ pre code { background: none; border: 0; padding: 0; font-size: .9rem; }
 
 @media (max-width: 520px) {
   nav a:nth-child(n+4) { display: none; }
-  .grid.two, .grid.four { grid-template-columns: 1fr; }
+  .grid.four { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
