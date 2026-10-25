@@ -42,9 +42,10 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; }
 code { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: .05em .35em; }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+/* .wrap sets only side padding, so a section's vertical rhythm survives it. */
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: 24px; }
 
-section { padding: 72px 24px; border-top: 1px solid var(--line); }
+section { padding-block: 72px; border-top: 1px solid var(--line); }
 section.hero, section.pillars { border-top: 0; }
 
 h1, h2, h3 { line-height: 1.15; letter-spacing: -.02em; margin: 0 0 .5em; }
@@ -80,6 +81,7 @@ nav a:hover { color: var(--fg); }
 
 /* Grids */
 .grid { display: grid; gap: 20px; }
+.grid.two { grid-template-columns: repeat(2, 1fr); }
 .grid.three { grid-template-columns: repeat(3, 1fr); }
 .grid.four { grid-template-columns: repeat(4, 1fr); }
 
@@ -108,6 +110,9 @@ pre {
 }
 pre code { background: none; border: 0; padding: 0; font-size: .9rem; }
 
+/* Community */
+.community .cards { margin-bottom: 0; }
+
 /* Specs */
 .specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 1.6em 0 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .specs div { padding: 18px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); }
@@ -133,14 +138,14 @@ pre code { background: none; border: 0; padding: 0; font-size: .9rem; }
   .specs div:nth-child(2n) { border-right: 0; }
   .specs div:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
   .specs div:nth-last-child(-n+2) { border-bottom: 0; }
-  section { padding: 56px 24px; }
+  section { padding-block: 56px; }
   .hero { padding-top: 56px; }
   nav { gap: 16px; font-size: .88rem; }
 }
 
 @media (max-width: 520px) {
-  nav a:nth-child(n+3) { display: none; }
-  .grid.four { grid-template-columns: 1fr; }
+  nav a:nth-child(n+4) { display: none; }
+  .grid.two, .grid.four { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

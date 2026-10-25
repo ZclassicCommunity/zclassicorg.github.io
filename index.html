@@ -12,6 +12,8 @@
   <meta property="og:title" content="Zclassic — Be your own full node">
   <meta property="og:description" content="Fair launch. Private payments. Proof-of-work since 2016.">
   <meta property="og:image" content="https://zclassic.org/zclassic.png">
+  <meta property="og:url" content="https://zclassic.org/">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,6 +23,7 @@
   <nav>
     <a href="#download">Download</a>
     <a href="#z23">Z23</a>
+    <a href="#community">Chat</a>
     <a href="#specs">Specs</a>
     <a href="#resources">Resources</a>
   </nav>
@@ -88,10 +91,28 @@
       <li><strong>Built to recover.</strong> A fresh node starts honestly empty and reports why when it can't make progress. It is designed to survive <code>kill -9</code>.</li>
       <li><strong>Answers to you.</strong> One executable you build and run on your own machine. Its optional software commons keeps code only when you accept that exact version.</li>
     </ul>
-<pre><code>git clone https://github.com/z23c/z23.git
-cd z23 &amp;&amp; make setup &amp;&amp; make -j z23
+<pre><code>git clone --recurse-submodules https://github.com/z23c/z23.git
+cd z23 &amp;&amp; make doctor &amp;&amp; make setup
+make -j"$(getconf _NPROCESSORS_ONLN)" z23
 build/bin/z23</code></pre>
-    <p class="small">Status: pre-v1, under active development and measured against eight public acceptance criteria, including consensus parity with <code>zclassicd</code>. <a href="https://github.com/z23c/z23">github.com/z23c/z23</a></p>
+    <p class="small">Status: pre-v1, under active development and measured against eight public acceptance criteria, including consensus parity with <code>zclassicd</code>.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://t.me/z23_chat">Join the Z23 chat</a>
+      <a class="btn" href="https://github.com/z23c/z23">Source on GitHub</a>
+    </div>
+  </section>
+
+  <section id="community" class="wrap community">
+    <h2>Talk to the people building it.</h2>
+    <p class="lede">Questions, node reports and ideas happen in the open on Telegram. Bring your logs; nobody needs permission to join.</p>
+    <div class="grid two cards">
+      <a class="card" href="https://t.me/z23_chat">
+        <strong>Z23 Chat</strong><span>Telegram · building, running and testing Z23</span>
+      </a>
+      <a class="card" href="https://t.me/zclassic_chat">
+        <strong>Zclassic Chat</strong><span>Telegram · the wider ZCL community</span>
+      </a>
+    </div>
   </section>
 
   <section id="specs" class="wrap">
@@ -102,7 +123,7 @@ build/bin/z23</code></pre>
       <div><dt>Consensus</dt><dd>Proof-of-work, Equihash</dd></div>
       <div><dt>Privacy</dt><dd>zk-SNARK shielded (Sapling)</dd></div>
       <div><dt>Maximum supply</dt><dd>11,462,488 ZCL</dd></div>
-      <div><dt>Mined so far</dt><dd>≈10.49 million (Sep 2026)</dd></div>
+      <div><dt>Mined so far</dt><dd>≈10.51 million (Oct 2026)</dd></div>
       <div><dt>Block reward</dt><dd>0.390625 ZCL, all to miners</dd></div>
       <div><dt>Next halving</dt><dd>Block 4,067,001</dd></div>
     </dl>
@@ -133,7 +154,8 @@ build/bin/z23</code></pre>
     </div>
     <div>
       <h3>Community</h3>
-      <a href="https://t.me/zclassic_chat">Telegram</a>
+      <a href="https://t.me/z23_chat">Z23 Telegram</a>
+      <a href="https://t.me/zclassic_chat">Zclassic Telegram</a>
       <a href="zclassic-mission-2025.pdf">Mission &amp; vision (2025)</a>
       <a href="zclassic.pdf">Zclassic paper</a>
       <a href="https://www.forbes.com/digital-assets/assets/zclassic-zcl/">Forbes</a>
