@@ -58,18 +58,19 @@
 
   <section id="download" class="wrap">
     <h2>Download</h2>
-    <p class="muted">Zclassic v2.1.2-beta6. Pick the wallet for a desktop app, or the command-line node for a server.</p>
+    <p class="muted">Wallet v2.1.2-beta7 · command-line node v2.1.2-beta6. Pick the wallet for a desktop app, or the command-line node for a server.</p>
+    <p>Beta7 fixes missing Windows runtime libraries, verifies cached node executables, protects local wallet metadata, and lets the node use its existing sync-cache defaults. Consensus rules are unchanged. <a href="https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta7">Read the release notes and platform requirements</a>.</p>
 
     <h3 class="dl-head">Wallet <span>· desktop app with the full node built in</span></h3>
     <div class="grid three cards">
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-win64.exe">
-        <strong>Windows</strong><span>64-bit · .exe · 34 MB</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta7/zclwallet-v2.1.2-beta7-win64.exe">
+        <strong>Windows</strong><span>64-bit · portable .exe</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-macos-arm64.dmg">
-        <strong>macOS</strong><span>Apple silicon · .dmg · 25 MB</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta7/zclwallet-v2.1.2-beta7-macos-arm64.dmg">
+        <strong>macOS</strong><span>Apple silicon · .dmg</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/zclwallet-v2.1.2-beta6-linux-x86_64">
-        <strong>Linux</strong><span>x86_64 · single file · 36 MB</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta7/zclwallet-v2.1.2-beta7-linux-x86_64">
+        <strong>Linux</strong><span>x86_64 · single file · glibc 2.31+</span><span class="get">Download</span>
       </a>
     </div>
 
@@ -86,7 +87,7 @@
       </a>
     </div>
 
-    <p class="small">Check what you downloaded against <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/SHA256SUMS.txt">SHA256SUMS.txt</a>: <code>sha256sum -c SHA256SUMS.txt --ignore-missing</code> (on macOS, <code>shasum -a 256 -c</code>). Older versions: <a href="https://github.com/ZclassicCommunity/zclassic/releases">all releases</a>.</p>
+    <p class="small">Verify downloads with the <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta7/SHA256SUMS.txt">beta7 wallet checksums</a> or <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta6/SHA256SUMS.txt">beta6 node checksums</a>: <code>sha256sum -c SHA256SUMS.txt --ignore-missing</code> (on macOS, <code>shasum -a 256 -c SHA256SUMS.txt</code>; on Windows, <code>Get-FileHash .\zclwallet-v2.1.2-beta7-win64.exe -Algorithm SHA256</code>). Older versions: <a href="https://github.com/ZclassicCommunity/zclassic/releases">all releases</a>.</p>
   </section>
 
   <section id="z23" class="wrap feature">
