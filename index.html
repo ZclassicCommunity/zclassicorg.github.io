@@ -58,39 +58,39 @@
 
   <section id="download" class="wrap">
     <h2>Download</h2>
-    <p class="muted">Wallet v2.1.2-beta12 for Windows, Linux and macOS; unchanged command-line node v2.1.2-beta11. Pick the wallet for a desktop app, or the command-line node for a server.</p>
-    <p>Beta12 automatically switches eligible existing wallets to verified checkpoint sync when they are far behind block 3.1 million. It backs up the wallet and preserves the previous chain before switching, with no repair-menu steps. Downloads, verification and wallet scanning still take time. The beta11 backend and consensus rules are unchanged. <a href="https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta12">Read the release notes and platform requirements</a>.</p>
+    <p class="muted">Wallet and command-line node v2.1.2-beta13 for Windows, Linux and macOS. Pick the wallet for a desktop app, or the command-line node for a server.</p>
+    <p>Beta13 is a new wallet and a new node. The shielded cryptography is now C23 with no Rust and no libsnark; start-up, balance queries and shielded sends are faster and use less memory. A first sync downloads the verified checkpoint snapshot from several servers at once, the node finds its peers within seconds, and the wallet keeps correct balances through hard kills and chain reorganisations. A repeated send with the same key cannot pay twice. No consensus rule is changed. Downloads, verification and wallet scanning still take time. <a href="https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta13">Read the release notes and platform requirements</a>.</p>
 
     <h3 id="wallet-downloads" class="dl-head">Wallet <span>· desktop app with the full node built in</span></h3>
     <div class="grid three cards">
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclwallet-v2.1.2-beta12-win64.exe">
-        <strong>Windows</strong><span>beta12 · 64-bit · portable .exe</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclwallet-v2.1.2-beta13-win64.exe">
+        <strong>Windows</strong><span>beta13 · 64-bit · portable .exe</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclwallet-v2.1.2-beta12-macos-arm64.dmg">
-        <strong>macOS</strong><span>beta12 · macOS 15+ · Apple silicon · .dmg</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclwallet-v2.1.2-beta13-macos-arm64.dmg">
+        <strong>macOS</strong><span>beta13 · macOS 14+ · Apple silicon · .dmg</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclwallet-v2.1.2-beta12-linux-x86_64">
-        <strong>Linux</strong><span>beta12 · x86_64 · single file · glibc 2.31+</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclwallet-v2.1.2-beta13-linux-x86_64">
+        <strong>Linux</strong><span>beta13 · x86_64 · single file · glibc 2.31+</span><span class="get">Download</span>
       </a>
     </div>
 
-    <p class="small">Mac builds target macOS 15 or newer and were tested on macOS 26. Windows builds are unsigned; Mac builds are ad-hoc signed and not Apple-notarized. Operating-system security prompts may still appear.</p>
+    <p class="small">Mac builds target macOS 14 or newer and were tested on macOS 26. Windows builds are unsigned; Mac builds are ad-hoc signed and not Apple-notarized. Operating-system security prompts may still appear.</p>
 
     <h3 id="cli-downloads" class="dl-head">Command-line tools <span>· <code>zclassicd</code>, <code>zclassic-cli</code>, <code>zclassic-tx</code></span></h3>
-    <p>All three archives below are included in the beta12 release. Each contains the node, RPC client and transaction tool. They retain beta11 filenames because the backend binaries are unchanged. <a href="https://github.com/ZclassicCommunity/zclassic/blob/master/README.md#rpc-and-cli">Read the command-line instructions</a>.</p>
+    <p>All three archives below are part of the beta13 release and are built from the same source commit as the wallet. Each contains the node, RPC client and transaction tool. <a href="https://github.com/ZclassicCommunity/zclassic/blob/master/README.md#rpc-and-cli">Read the command-line instructions</a>.</p>
     <div class="grid three cards">
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclassicd-v2.1.2-beta11-linux-x86_64.tar.gz">
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclassicd-v2.1.2-beta13-linux-x86_64.tar.gz">
         <strong>Linux</strong><span>x86_64 · .tar.gz</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclassicd-v2.1.2-beta11-macos-arm64.tar.gz">
-        <strong>macOS</strong><span>macOS 15+ · Apple silicon · .tar.gz</span><span class="get">Download</span>
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclassicd-v2.1.2-beta13-macos-arm64.tar.gz">
+        <strong>macOS</strong><span>macOS 14+ · Apple silicon · .tar.gz</span><span class="get">Download</span>
       </a>
-      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/zclassicd-v2.1.2-beta11-win64.zip">
+      <a class="card" href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/zclassicd-v2.1.2-beta13-win64.zip">
         <strong>Windows</strong><span>64-bit · .zip</span><span class="get">Download</span>
       </a>
     </div>
 
-    <p class="small">Verify any download with the <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/SHA256SUMS.txt">release checksums</a>: <code>sha256sum -c SHA256SUMS.txt --ignore-missing</code> (on macOS, <code>shasum -a 256 -c SHA256SUMS.txt</code>; on Windows, <code>Get-FileHash .\zclwallet-v2.1.2-beta12-win64.exe -Algorithm SHA256</code>). <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta12/BUILDINFO.txt">Build information and test results</a> · <a href="https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta12">Complete beta12 release</a> · <a href="https://github.com/ZclassicCommunity/zclassic/releases">Older releases</a>.</p>
+    <p class="small">Verify any download with the <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/SHA256SUMS.txt">release checksums</a>: <code>sha256sum -c SHA256SUMS.txt --ignore-missing</code> (on macOS, <code>shasum -a 256 -c SHA256SUMS.txt</code>; on Windows, <code>Get-FileHash .\zclwallet-v2.1.2-beta13-win64.exe -Algorithm SHA256</code>). <a href="https://github.com/ZclassicCommunity/zclassic/releases/download/v2.1.2-beta13/BUILDINFO.txt">Build information and test results</a> · <a href="https://github.com/ZclassicCommunity/zclassic/releases/tag/v2.1.2-beta13">Complete beta13 release</a> · <a href="https://github.com/ZclassicCommunity/zclassic/releases">Older releases</a>.</p>
   </section>
 
   <section id="z23" class="wrap feature">
@@ -150,7 +150,7 @@ build/bin/z23</code></pre>
     </div>
     <div>
       <h3>Wallets and downloads</h3>
-      <a href="#wallet-downloads">ZClassic beta12 desktop wallets</a>
+      <a href="#wallet-downloads">ZClassic beta13 desktop wallets</a>
       <a href="#cli-downloads">ZClassic command-line tools</a>
       <a href="https://github.com/ZclassicCommunity/zclassic/blob/master/wallet/README.md">Wallet setup and usage</a>
       <a href="https://zelcore.io/">Zelcore</a>
